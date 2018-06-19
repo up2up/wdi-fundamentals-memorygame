@@ -25,28 +25,29 @@ var cards = [
 
 var cardsInPlay = [];
 
-var checkForMatch = function () {
+var checkForMatch = function (elem) {
+  elem.setAttribute('src', cardsInPlay[cardsInPlay.length - 1].cardImage);
   if (cardsInPlay.length >= 2) {
     var comPareOne = cardsInPlay[cardsInPlay.length - 1];
     var comPareTwo = cardsInPlay[cardsInPlay.length - 2];
     if (comPareOne.rank === comPareTwo.rank) {
       if (comPareOne.suit !== comPareTwo.suit) {
-        alert("Matching");
+        alert("You found a match!");
       }
     }
     else {
-      alert("Not matching");
+      alert("Sorry, try again.");
     }
   }
 }
 
-var flipCard = function () {
-  var cardId = this.getAttribute('data-id');
+var flipCard = function (elem) {
+  var cardId = elem.getAttribute('data-id');
   console.log("User flipped " + cards[cardId].rank);
   console.log("User flipped " + cards[cardId].cardImage);
   console.log("User flipped " + cards[cardId].suit);
   cardsInPlay.push(cards[cardId]);
-  checkForMatch();
+  checkForMatch(elem);
 }
 
 var createBoard = function () {
@@ -54,7 +55,7 @@ var createBoard = function () {
     var cardElement = document.createElement('img');
     cardElement.setAttribute('src', 'images/back.png');
     cardElement.setAttribute('data-id', i);
-    cardElement.addEventListener('click', flipCard);
+    cardElement.addEventListener('click', function () { flipCard(this);});
     document.getElementById("game-board").appendChild(cardElement);
   }
 
