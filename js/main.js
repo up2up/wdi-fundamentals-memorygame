@@ -32,6 +32,7 @@ var checkForMatch = function (elem) {
     if (comPareOne.rank === comPareTwo.rank) {
       if (comPareOne.suit !== comPareTwo.suit) {
         alert("You found a match!");
+        cardsInPlay = [];
         userScore++;
         document.getElementById("user-score").innerHTML = userScore;
       }
