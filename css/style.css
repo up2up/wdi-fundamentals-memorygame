@@ -95,3 +95,13 @@ footer {
   color: #F15B31;
   font-weight: 700;
 }
+
+#reset {
+  background-color: white;
+  color: black;
+  border: 2px solid #00A6B3;
+  font-size: 16px;
+  margin: 30px 0 0 0;
+  padding: 10px 24px;
+  border-radius: 12px;
+}
